@@ -6,8 +6,13 @@ const lista = document.getElementById("lista");
 
 const mostrarLista = () => {
   lista.innerHTML = libros
-    .map((item) => `<div class="tarjeta"> ${item} </div>`)
-    .join("");
+    .map(
+      (item, index) => `<div class="tarjeta">${item}<button onclick="eliminarLibro(${index})">x</button></div>`).join("");
+};
+
+const eliminarLibro = (index) => {
+  libros.splice(index, 1);
+  mostrarLista();
 };
 
 formulario.addEventListener("submit", (e) => {
